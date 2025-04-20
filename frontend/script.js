@@ -1,12 +1,21 @@
-<link rel="stylesheet" href="style.css">document.addEventListener('DOMContentLoaded', () => {
-  alert("مرحباً بكم في منصة الجغرافي معاذ السيد!");
-});body {
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 20px;
+// تسجيل مستخدم جديد
+function registerUser(name, email, password) {
+    fetch('http://127.0.0.1:5000/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message));
 }
 
-h1 {
-  color: #333;
+// تسجيل الدخول
+function loginUser(email, password) {
+    fetch('http://127.0.0.1:5000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message));
 }
